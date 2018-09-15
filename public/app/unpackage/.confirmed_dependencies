@@ -1,0 +1,211 @@
+{
+  "src/index.html": {
+    "resources": [
+      "js/app.js",
+      "js/vue.js",
+      "js/mui.min.js",
+      "css/app.css",
+      "css/mui.min.css",
+      "js/module.js",
+      "font/iconfont.js",
+      "font/iconfont.ttf",
+      "font/iconfont.css",
+      "img/index2.png",
+      "img/index3.png",
+      "img/search.png",
+      "img/index1.png",
+      "img/tj.png",
+      "img/index4.png"
+    ],
+    "refer": [
+      "src/goods.html",
+      "src/login.html",
+      "src/member.html",
+      "src/cart.html",
+      "src/category.html",
+      "src/detail.html"
+    ]
+  },
+  "src/goods.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "js/app.js",
+      "js/vue.js",
+      "js/mui.min.js",
+      "css/app.css",
+      "css/mui.min.css",
+      "js/module.js"
+    ],
+    "refer": [
+      "src/detail.html",
+      "src/index.html",
+      "src/category.html"
+    ]
+  },
+  "src/login.html": {
+    "resources": [
+      "img/member.png",
+      "fonts/mui.ttf",
+      "js/app.js",
+      "js/vue.js",
+      "js/mui.min.js",
+      "css/app.css",
+      "css/mui.min.css",
+      "js/module.js",
+      "font/iconfont.ttf",
+      "font/iconfont.css"
+    ],
+    "refer": [
+      "src/member.html",
+      "src/register.html",
+      "src/index.html",
+      "src/find_password.html"
+    ]
+  },
+  "src/member.html": {
+    "resources": [
+      "img/head.png",
+      "img/member_bg.png",
+      "js/mui.min.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/app.js",
+      "js/vue.js",
+      "js/module.js",
+      "font/iconfont.ttf",
+      "font/iconfont.css"
+    ],
+    "refer": [
+      "src/my_order.html",
+      "src/index.html",
+      "src/login.html",
+      "src/member_info.html",
+      "src/about.html",
+      "src/recommend.html",
+      "src/share.html",
+      "src/withdrawals.html",
+      "src/setting.html",
+      "src/cart.html",
+      "src/category.html"
+    ]
+  },
+  "src/my_order.html": {
+    "resources": [
+      "js/app.js",
+      "js/vue.js",
+      "js/mui.min.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/module.js"
+    ],
+    "refer": [
+      "src/login.html",
+      "src/member.html"
+    ]
+  },
+  "src/detail.html": {
+    "resources": [
+      "js/app.js",
+      "js/vue.js",
+      "js/mui.min.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/module.js"
+    ],
+    "refer": [
+      "src/cart.html",
+      "src/order.html"
+    ]
+  },
+  "src/register.html": {
+    "resources": [
+      "js/mui.min.js"
+    ]
+  },
+  "src/cart.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "js/app.js",
+      "js/vue.js",
+      "js/mui.min.js",
+      "css/app.css",
+      "css/mui.min.css",
+      "js/module.js",
+      "font/iconfont.ttf",
+      "font/iconfont.css"
+    ],
+    "refer": [
+      "src/index.html",
+      "src/login.html",
+      "src/category.html",
+      "src/goods.html",
+      "src/order.html",
+      "src/member.html"
+    ]
+  },
+  "src/member_info.html": {
+    "resources": [
+      "img/head.jpg",
+      "fonts/mui.ttf",
+      "js/app.js",
+      "js/vue.js",
+      "js/mui.min.js",
+      "css/app.css",
+      "css/mui.min.css",
+      "js/module.js"
+    ],
+    "refer": [
+      "src/login.html",
+      "src/member.html"
+    ]
+  },
+  "src/about.html": {
+    "resources": [
+      "img/about.png",
+      "fonts/mui.ttf"
+    ]
+  },
+  "src/recommend.html": {
+    "resources": [
+      "js/app.js",
+      "js/vue.js",
+      "js/mui.min.js",
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/module.js"
+    ]
+  },
+  "src/category.html": {
+    "refer": [
+      "src/cart.html",
+      "src/index.html",
+      "src/goods.html",
+      "src/login.html",
+      "src/detail.html",
+      "src/member.html"
+    ]
+  },
+  "src/order.html": {
+    "resources": [
+      "js/mui.picker.min.js",
+      "css/mui.picker.min.css"
+    ],
+    "refer": [
+      "src/my_order.html"
+    ]
+  },
+  "src/find_password.html": {
+    "refer": [
+      "src/login.html"
+    ]
+  },
+  "src/setting.html": {
+    "refer": [
+      "src/index.html"
+    ]
+  }
+}

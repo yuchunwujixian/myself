@@ -1,0 +1,91 @@
+<div class="tab-pane fade" id="basic">
+    <div class="widget-body no-padding">
+        <form id="basic-form" class="edit-form form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/config/index')}">
+            <input type="hidden" name="key" value="base"/>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th width="15%">
+                            变量标题
+                        </th>
+                        <th width="70%">
+                            变量值
+                        </th>
+                        <th width="15%">
+                            调用方法
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            站点名称
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[title]" value="{$config.base.title}" class="form-control" data-rule="required" data-tip="请填写站点名称"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            {literal}{$config.base.title}{/literal}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            关键词
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[keywords]" value="{$config.base.keywords}" class="form-control" data-rule="required" data-tip="请填写站点关键词"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            {literal}{$config.base.keywords}{/literal}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            站点描述
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[description]"  value="{$config.base.description}" class="form-control" data-rule="required" data-tip="请填写站点描述"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            {literal}{$config.base.description}{/literal}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success btn-embossed">
+                                确定
+                            </button>
+                            <button type="reset" class="btn btn-default btn-embossed">
+                                重置
+                            </button>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+</div>

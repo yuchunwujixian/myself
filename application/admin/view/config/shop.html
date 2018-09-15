@@ -1,0 +1,153 @@
+<div class="tab-pane fade " id="shop">
+    <div class="widget-body no-padding">
+        <form id="shop-form" class="edit-form form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/config/index')}">
+            <input type="hidden" name="key" value="shop"/>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th width="15%">
+                            变量标题
+                        </th>
+                        <th width="70%">
+                            变量值
+                        </th>
+                        <th width="15%">
+                            调用方法
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            一级返还比例
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[return1]" value="{$config.shop.return1}" class="form-control" data-rule="" data-tip="填写一级推广员获得返还比例（%）"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            {literal}{$config.shop.return1}{/literal}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            二级返还比例
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[return2]" value="{$config.shop.return2}" class="form-control" data-rule="" data-tip="填写二级推广员获得返还比例（%）"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            {literal}{$config.shop.return2}{/literal}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            三级返还比例
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[return3]" value="{$config.shop.return3}" class="form-control" data-rule="" data-tip="填写三级推广员获得返还比例（%）"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            {literal}{$config.shop.return3}{/literal}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            配送方式
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <dl class="fieldlist" rel="4" data-name="row[postType]">
+                                        <dd>
+                                            <ins>
+                                                键名
+                                            </ins>
+                                            <ins>
+                                                键值
+                                            </ins>
+                                        </dd>
+                                        {if $config.shop.postType}
+                                        {volist name="config.shop.postType.field" id="val"}
+                                        <dd class="form-inline">
+                                            <input type="text" name="row[postType][field][]" class="form-control" value="{$val}" size="10"/>
+                                            <input type="text" name="row[postType][value][]" class="form-control" value="{$config['shop']['postType']['value'][$key]}" size="40"/>
+                                            <span class="btn btn-sm btn-danger btn-remove">
+                                                <i class="fa fa-times">
+                                                </i>
+                                            </span>
+                                            <span class="btn btn-sm btn-primary btn-dragsort">
+                                                <i class="fa fa-arrows">
+                                                </i>
+                                            </span>
+                                        </dd>
+                                        {/volist}
+                                        {else}
+                                        <dd class="form-inline">
+                                            <input type="text" name="row[postType][field][]" class="form-control" value="" size="10"/>
+                                            <input type="text" name="row[postType][value][]" class="form-control" value="" size="40"/>
+                                            <span class="btn btn-sm btn-danger btn-remove">
+                                                <i class="fa fa-times">
+                                                </i>
+                                            </span>
+                                            <span class="btn btn-sm btn-primary btn-dragsort">
+                                                <i class="fa fa-arrows">
+                                                </i>
+                                            </span>
+                                        </dd>
+                                        {/if}
+                                        <dd>
+                                            <a href="javascript:;" class="append btn btn-sm btn-success">
+                                                <i class="fa fa-plus">
+                                                </i>
+                                                追加
+                                            </a>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            {literal}{$config.shop.postType}{/literal}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success btn-embossed">
+                                确定
+                            </button>
+                            <button type="reset" class="btn btn-default btn-embossed">
+                                重置
+                            </button>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+</div>

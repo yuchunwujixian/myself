@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>修改密码</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/app.css"/>
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="../js/app.js" ></script>
+		<script type="text/javascript" src="../js/module.js" ></script>
+		<script>
+			$(function(){
+				module.change_password();
+			});
+		</script>
+	</head>
+	<body class="member_info">
+		
+		<header class="mui-bar mui-bar-nav header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<div class="mui-title">个人资料</div>
+		</header>
+		<div class="mui-content" id="content">
+			
+			<div class="mui-row">
+				
+				<div class="mui-col-sm-12 mui-col-xs-12  app-box" style="margin-top: 10px;">
+					<div class="mui-input-row">
+						<label style="padding-left: 0px;">输入旧密码</label>
+	    				<input type="password" v-model="userinfo.password_old" class="mui-input-clear">
+					</div>
+				</div>
+
+				<div class="mui-col-sm-12 mui-col-xs-12  app-box" style="margin-top: 10px;">
+					<div class="mui-input-row">
+						<label style="padding-left: 0px;">输入新密码</label>
+	    				<input type="password" v-model="userinfo.password" class="mui-input-clear">
+					</div>
+				</div>				
+				
+				<div class="mui-col-sm-12 mui-col-xs-12  app-box" style="margin-top: 10px;">
+					<div class="mui-input-row">
+						<label style="padding-left: 0px;">重复输入</label>
+	    				<input type="password" v-model="userinfo.password_confirm" class="mui-input-clear">
+					</div>
+				</div>	
+				
+				<div class="mui-col-sm-12 mui-col-xs-12" style="text-align: center;margin-top: 10px;">
+					<button v-on:tap.stop="save" class="mui-btn mui-btn-success" style="width: 90%">立即修改</button>	
+				</div>	
+				
+			</div>
+		    
+		</div>
+	</body>
+</html>

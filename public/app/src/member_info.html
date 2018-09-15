@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>个人资料</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/app.css"/>
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="../js/app.js" ></script>
+		<script type="text/javascript" src="../js/module.js" ></script>
+		<script>
+			$(function(){
+				module.member_info();
+			});
+		</script>
+	</head>
+	<body class="member_info">
+		
+		<header class="mui-bar mui-bar-nav header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<div class="mui-title">个人资料</div>
+			<a class="mui-pull-right" style="padding-top:10px;" id="save">保存</a>
+		</header>
+		<div class="mui-content" id="content">
+			
+			<div class="mui-row">
+				<div class="mui-col-sm-12 mui-col-xs-12 userheaderbox  app-box">
+					<div class="mui-row" style="height: 100%;" v-on:tap.stop="change_headimg()">
+						<div class="mui-col-sm-3 mui-col-xs-3" style="height: 100%;"><img  class="userheader" v-bind:src="userinfo.avatar?config.url+'/../'+userinfo.avatar:'../img/head.jpg'" ></div>
+						<div class="mui-col-sm-3 mui-col-xs-3 edit-header" style="height: 100%;line-height:60px;">编辑头像</div>
+						<div class="mui-col-sm-6 mui-col-xs-6" style="height: 100%;line-height:60px;"><span class="mui-icon mui-icon-arrowright mui-pull-right" style="margin-top: .5em;color: #888888;"></span></div>
+					</div>
+				</div>
+				
+				<div class="mui-col-sm-12 mui-col-xs-12  app-box" style="margin-top: 10px;">
+					<div class="mui-input-row">
+						<label style="padding-left: 0px;">用户名</label>
+	    				<input type="text" v-model="userinfo.user_name" class="mui-input-clear" placeholder="用户名一旦设置无法修改">
+					</div>
+				</div>
+				
+				<div class="mui-col-sm-12 mui-col-xs-12  app-box">
+					<div class="mui-input-row">
+						<label style="padding-left: 0px;">昵称</label>
+	    				<input type="text" v-model="userinfo.nickname" class="mui-input-clear">
+					</div>
+				</div>	
+				<div class="mui-col-sm-12 mui-col-xs-12  app-box" >
+					<div class="mui-input-row" style="border-bottom: none;">
+						<label style="padding-left: 0px;">性别</label>
+	    				<select v-model="userinfo.sex">
+	    					<option value="0">保密</option>
+	    					<option value="1">男</option>
+	    					<option value="2">女</option>
+	    				</select>
+					</div>
+				</div>				
+			
+				<div class="mui-col-sm-12 mui-col-xs-12 action">
+					<a href="change_passwd.html" data-jump="1" style="line-height: 2;">
+					修改密码<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>	
+					</a>
+				</div>
+				
+				<div class="mui-badg-col-sm-12 mui-col-xs-12 app-box action" v-if="userinfo.mobile">
+					<div class="mui-row ">
+						<div class="mui-col-xs-2 mui-col-sm-2" style="padding-top: 2px;">
+							<span class="iconfont">&#xe61e;</span>
+						</div>
+						<div class="mui-col-sm-4 mui-col-xs-4 telnum" v-html="userinfo.mobile">
+							
+						</div>
+						<div class="mui-col-sm-6 mui-col-xs-6" style="padding-top: 0.5em; padding-right: 1em;">
+							<span class="bangding mui-pull-right">已绑定</span>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		    
+		</div>
+	</body>
+</html>

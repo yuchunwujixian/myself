@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>提交订单</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/app.css"/>
+		<link rel="stylesheet" href="../css/mui.picker.min.css"/>
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<script type="text/javascript" src="../js/mui.picker.min.js" ></script>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="../js/app.js" ></script>
+		<script type="text/javascript" src="../js/module.js" ></script>
+		<script>
+			$(function(){
+				module.order();
+			});
+		</script>
+	</head>
+	<body class="order">
+		<header class="mui-bar mui-bar-nav header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		</header>		
+		<div id="content" class="mui-content">
+			
+			<div id="popover" class="mui-popover app-popover">
+				<form class="mui-input-group">
+				    <div class="mui-input-row">
+				    	<input type="text" class="mui-input-clear" id="address" placeholder="请输入收货地址">
+				    </div>
+				    <div class="mui-input-row">
+				    	<input type="text" class="mui-input-clear" id="linkname" placeholder="请输入联系人">
+				    </div>				    
+				    <div class="mui-input-row">
+				        <input type="number" class="mui-input-clear" id="mobile" placeholder="请输入手机号码">
+				    </div>
+				    <div class="mui-button-row">
+				        <button type="button" class="mui-btn mui-btn-primary" v-on:tap.stop="setAddress">确认</button>
+				        <button type="button" class="mui-btn mui-btn-danger" v-on:tap.stop="openInputAddress">取消</button>
+				    </div>
+				</form>			
+			</div>
+			
+			<div v-if="address&&mobile" class="app-box">
+				<ul class="mui-table-view">
+				<li class="mui-table-view-cell" v-on:tap.stop="openInputAddress">
+				    <a class="mui-navigate-right">
+				    	<div v-html="address"></div>
+				    	<div v-html="linkname+'&nbsp;&nbsp;'+mobile"></div>
+				    </a>
+				</li>	
+				</ul>
+			</div>
+			<div v-if="!address||!mobile" class="app-box">
+				<div class="app-content-empty" style="padding-top: 0.5em;height: 80px;line-height: 80px;">
+					<p><a href="javascript:" v-on:tap.stop="openInputAddress" class="app-color">请添加收货地址</a></p>
+				</div>
+			</div>
+			
+			<div class="app-box goods-list">
+				<ul class="mui-table-view" v-for="v in info.list">
+				    <li class="mui-table-view-cell mui-media">
+				        <a href="javascript:;">
+				            <img class="mui-media-object mui-pull-left" v-bind:src="config.url+'/..'+v.goods.picture">
+				            <div class="mui-media-body">
+				                <p v-html="v.goods.goods_name"></p>
+				                <p v-html="v.sku_name"></p>
+				                <div>
+				                	<div class="mui-pull-left"><span v-html="'￥'+v.price*v.num"></span></div>
+				                	<div class="mui-pull-right action">
+				                		<span class="app-color" v-on:tap.stop="min(v)">-</span>
+				                		<input type="number" v-model="v.num" />
+				                		<span class="app-color" v-on:tap.stop="plus(v)">+</span>
+				                	</div>				                	
+				                </div>
+				            </div>
+				        </a>
+				    </li>
+				</ul>	
+
+			</div>
+			
+			<div class="footer">
+				<div class="info">
+					<div class="price mui-pull-left">合计：<span v-html="'￥'+total"></span></div>
+					<div class="post mui-pull-right">
+						<button class="mui-btn" v-on:tap.stop="post">结算</button>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</body>
+</html>

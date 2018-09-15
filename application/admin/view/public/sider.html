@@ -1,0 +1,115 @@
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel hidden-xs">
+                        <div class="pull-left image">
+                            <a href="profile" class="addtabsit"><img src="__STATIC__/assets/img/avatar.png" class="img-circle" /></a>
+                        </div>
+                        <div class="pull-left info">
+                            <p>{:session('admin_name')}</p>
+                            <i class="fa fa-circle text-success"></i> 在线        </div>
+                    </div>
+
+                    <!-- search form -->
+<!--                     <form action="" method="get" class="sidebar-form" onsubmit="return false;">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="搜索菜单">
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            <div class="menuresult list-group sidebar-form hide">
+                            </div>
+                        </div>
+                    </form> -->
+                    <!-- /.search form -->
+
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <!--如果想始终显示子菜单,则给ul加上show-submenu类即可-->
+                    <ul class="sidebar-menu">
+                        <li class="header">站内导航</li>
+                        <li class=" active"><a href="{:url('admin/index/dashboard')}" addtabs="11180" url="{:url('admin/index/dashboard')}" py="kzt" pinyin="kongzhitai"><i class="fa fa-dashboard"></i> <span>控制台</span> <span class="pull-right-container"> <small class="label pull-right bg-blue">hot</small></span></a> </li>
+                        
+                        {if session('group_id')==1}
+                        <li class="treeview"><a href="javascript:;" addtabs="11256" url="javascript:;" py="cggl" pinyin="changguiguanli"><i class="fa fa-list"></i> <span>订单管理</span> <span class="pull-right-container"> <small class="label pull-right bg-purple">{$OrderPost}</small></span></a> 
+                            <ul class="treeview-menu">
+                                <li class=""><a href="{:url('admin/order/index')}" addtabs="11264" url="{:url('admin/order/index')}" py="qbdd" pinyin="quanbudingdan"><i class="fa fa-list"></i> <span>全部订单</span> <span class="pull-right-container"> </span></a> </li>
+
+                                <li class=""><a href="{:url('admin/order/index',['status'=>1])}" addtabs="11266" url="{:url('admin/order/index',['status'=>1])}" py="dfh" pinyin="daifahuo"><i class="fa fa-list"></i> <span>待发货</span> <span class="pull-right-container"> </span></a> </li>
+
+                                <li class=""><a href="{:url('admin/order/index',['status'=>2])}" addtabs="11267" url="{:url('admin/order/index',['status'=>2])}" py="dsh" pinyin="daishouhuo"><i class="fa fa-list"></i> <span>待收货</span> <span class="pull-right-container"> </span></a> </li>
+
+                                <li class=""><a href="{:url('admin/order/index',['status'=>99])}" addtabs="11268" url="{:url('admin/order/index',['status'=>99])}" py="ywc" pinyin="yiwancheng"><i class="fa fa-list"></i> <span>已完成</span> <span class="pull-right-container"> </span></a> </li>
+                            </ul>
+                        </li>                       
+
+                        <li class=" treeview"><a href="javascript:;" addtabs="11218" url="javascript:;" py="spgl" pinyin="shangpinguanli"><i class="fa fa-shopping-cart"></i> <span>商品管理</span> <span class="pull-right-container"><i class="fa fa-angle-left"></i> </span></a> 
+                            <ul class="treeview-menu">
+                                <li class=""><a href="{:url('admin/goods/category')}" addtabs="11219" url="{:url('admin/goods/category')}" py="spfl" pinyin="shangpinfenlei"><i class="fa fa-briefcase"></i> <span>商品分类</span> <span class="pull-right-container"> </span></a> </li>
+
+                                <li class=""><a href="{:url('admin/goods/index')}" addtabs="11226" url="{:url('admin/goods/index')}" py="splb" pinyin="shangpinliebiao"><i class="fa fa-list"></i> <span>商品列表</span> <span class="pull-right-container"> </span></a> </li>
+
+                                <!--<li class=""><a href="{:url('admin/goods/spec')}" addtabs="11227" url="{:url('admin/goods/spec')}" py="spgg" pinyin="shangpinguige"><i class="fa fa-cubes"></i> <span>商品规格</span> <span class="pull-right-container"> </span></a> </li>-->
+
+                                <!--<li class=""><a href="{:url('admin/goods/attribute')}" addtabs="11228" url="{:url('admin/goods/attribute')}" py="splx" pinyin="shangpinleixing"><i class="fa fa-film"></i> <span>商品类型</span> <span class="pull-right-container"> </span></a> </li>                                -->
+                                
+                            </ul>
+                        </li>
+
+                        <li class="treeview"><a href="javascript:;" addtabs="11280" url="javascript:;" py="dygl" pinyin="dayinguanli"><i class="fa fa-print"></i> <span>打印管理</span><span class="pull-right-container"><i class="fa fa-angle-left"></i> </span></a>
+
+                            <ul class="treeview-menu">
+                                <li class=""><a href="{:url('admin/task/goods')}" addtabs="11264" url="{:url('admin/task/goods')}" py="tjdy" pinyin="tianjiadayin"><i class="fa fa-plus"></i> <span>添加打印</span> <span class="pull-right-container"> </span></a> </li>
+                                <li class=""><a href="{:url('admin/task/index')}" addtabs="11265" url="{:url('admin/task/index')}" py="dyjl" pinyin="dayinjilu"><i class="fa fa-list"></i> <span>打印记录</span> <span class="pull-right-container"> </span></a> </li>                                
+                            </ul>                         
+                        </li>                        
+
+                        <li class=" treeview"><a href="javascript:;" addtabs="1" url="javascript:;" py="nrgl" pinyin="neirongguanli"><i class="fa fa-pencil-square-o"></i> <span>内容管理</span> <span class="pull-right-container"><i class="fa fa-angle-left"></i> </span></a> 
+                            <ul class="treeview-menu">
+                                <li class=""><a href="{:url('admin/content/category')}" addtabs="2" url="{:url('admin/content/category')}" py="nrfl" pinyin="neirongfenlei"><i class="fa fa-briefcase"></i> <span>内容分类</span> <span class="pull-right-container"> </span></a> </li>
+
+                                <li class=""><a href="{:url('admin/content/index')}" addtabs="3" url="{:url('admin/content/index')}" py="nrlb" pinyin="neirongliebiao"><i class="fa fa-list"></i> <span>内容列表</span> <span class="pull-right-container"> </span></a> </li>
+                                
+                            </ul>
+                        </li>                        
+
+                        <li class=" treeview"><a href="javascript:;" addtabs="11192" url="javascript:;" py="hygl" pinyin="huiyuanguanli"><i class="fa fa-user"></i> <span>会员管理</span> <span class="pull-right-container"><i class="fa fa-angle-left"></i> </span></a> 
+                            <ul class="treeview-menu">
+                                <li class=""><a href="{:url('admin/user/index')}" addtabs="11193" url="{:url('admin/user/index')}" py="hylb" pinyin="huiyuanliebiao"><i class="fa fa-list"></i> <span>会员列表</span> <span class="pull-right-container"> </span></a> </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="treeview"><a href="javascript:;" addtabs="4" url="javascript:;" py="glygl" pinyin="guanliyuanguanli"><i class="fa fa-user"></i> <span>管理员管理</span><span class="pull-right-container"><i class="fa fa-angle-left"></i> </span></a> 
+                            <ul class="treeview-menu">
+                                <li class=""><a href="{:url('admin/admin/index')}" addtabs="5" url="{:url('admin/admin/index')}" py="glylb" pinyin="yonghuliebiao"><i class="fa fa-list"></i> <span>管理员列表</span> <span class="pull-right-container"> </span></a> </li>
+                                <li class=""><a href="{:url('admin/group/index')}" addtabs="6" url="{:url('admin/group/index')}" py="glyfz" pinyin="yonghuzu"><i class="fa fa-group"></i> <span>管理员分组</span> <span class="pull-right-container"> </span></a> </li>
+                            </ul>
+                        </li>
+
+                        <li class=" treeview"><a href="javascript:;" addtabs="11325" url="javascript:;" py="gnsz" pinyin="gongnengshezhi"><i class="fa fa-wrench"></i> <span>功能设置</span> <span class="pull-right-container"><i class="fa fa-angle-left"></i> </span></a> 
+                            <ul class="treeview-menu">
+
+                                <li class=""><a href="{:url('admin/config/index')}" addtabs="11326" url="{:url('admin/config/index')}" py="xtsz" pinyin="xitongshezhi"><i class="fa fa-cog"></i> <span>系统设置</span> <span class="pull-right-container"> </span></a></li>
+
+                                <li class=""><a href="{:url('admin/position/index')}" addtabs="11327" url="{:url('admin/position/index')}" py="xtsz" pinyin="xitongshezhi"><i class="fa fa-cog"></i> <span>广告位设置</span> <span class="pull-right-container"> </span></a></li>
+                                
+                            </ul>
+                        </li>
+                        {/if}
+
+                        {if session('group_id')==2}
+                        <li class="treeview"><a href="javascript:;" addtabs="11280" url="javascript:;" py="dygl" pinyin="dayinguanli"><i class="fa fa-print"></i> <span>打印管理</span><span class="pull-right-container"><i class="fa fa-angle-left"></i> </span></a>
+
+                            <ul class="treeview-menu">
+                                <li class=""><a href="{:url('admin/task/goods')}" addtabs="11264" url="{:url('admin/task/goods')}" py="tjdy" pinyin="tianjiadayin"><i class="fa fa-plus"></i> <span>添加打印</span> <span class="pull-right-container"> </span></a> </li>
+                                <li class=""><a href="{:url('admin/task/index')}" addtabs="11265" url="{:url('admin/task/index')}" py="dyjl" pinyin="dayinjilu"><i class="fa fa-list"></i> <span>打印记录</span> <span class="pull-right-container"> </span></a> </li>                                
+                            </ul>                         
+                        </li>                          
+                        {/if}
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>会员中心</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/app.css"/>
+		<link rel="stylesheet" href="../font/iconfont.css" />
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="../js/app.js" ></script>
+		<script type="text/javascript" src="../js/module.js" ></script>
+		<script>
+			$(function(){
+				module.member();
+			});
+		</script>
+	</head>
+	<body class="member">
+		
+		<nav class="mui-bar mui-bar-tab footer">
+			<a class="mui-tab-item" href="index.html" data-jump="1">
+				<span class="mui-icon iconfont">&#xe62c;</span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="category.html" data-jump="1">
+				<span class="mui-icon iconfont">&#xe7f9;</span>
+				<span class="mui-tab-label">分类</span>
+			</a>
+			<a class="mui-tab-item " href="cart.html" data-jump="1">
+				<span class="mui-icon iconfont">&#xe600;</span>
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a class="mui-tab-item mui-active" href="member.html">
+				<span class="mui-icon iconfont">&#xe61c;</span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>	
+		
+		<div class="mui-content" id="content">
+			
+			<div class="user-top">
+				<a href="member_info.html" data-jump="1">
+					<div class="mui-row">
+						<div class="mui-col-xs-3 mui-col-sm-3 head">
+							<img v-bind:src="userinfo.avatar?config.url+'/../'+userinfo.avatar:'../img/head.jpg'"/>
+						</div>
+						<div class="mui-col-xs-7 mui-col-sm-7 userinfo">
+							<p class="mobile"><span v-html="userinfo.mobile"></span></p>
+						</div>
+						<div class="mui-col-xs-2 mui-col-sm-2"></div>
+					</div>
+				</a>
+			</div>	
+			
+			<div class="action">
+				<!--<ul class="mui-table-view">
+				    <li class="mui-table-view-cell">
+				        <a class="mui-navigate-right" href="member_info.html" data-jump="1">个人资料</a>
+				    </li>
+				</ul>	-->
+				<ul class="mui-table-view">
+				    <li class="mui-table-view-cell">
+				        <a class="mui-navigate-right" href="my_order.html" data-jump="1">我的订单</a>
+				    </li>
+				</ul>
+
+				<ul class="mui-table-view">
+				    <li class="mui-table-view-cell">
+				        <a class="mui-navigate-right" href="about.html" data-jump="1">关于我们</a>
+				    </li>
+				    <li class="mui-table-view-cell">
+				        <a class="mui-navigate-right" href="page.html" data-obj='{"content_id":2}' data-jump="1">公司简介</a>
+				    </li>
+				    <li class="mui-table-view-cell">
+				        <a class="mui-navigate-right" href="page.html" data-obj='{"content_id":3}' data-jump="1">产品介绍</a>
+				    </li>
+				</ul>
+				
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-text-center" v-on:tap.stop="login_out">退出登录</li>
+				</ul>
+
+			</div>
+			
+		</div>
+		
+	</body>
+</html>

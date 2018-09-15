@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>首页</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/app.css" />
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/app.js"></script>
+		<script type="text/javascript" src="../js/module.js"></script>
+		<script>
+			$(function() {
+				module.index();
+			});
+		</script>
+	</head>
+
+	<body class="index">
+
+		<nav class="mui-bar mui-bar-tab footer">
+			<a class="mui-tab-item mui-active" href="index.html">
+				<span class="mui-icon iconfont">&#xe62c;</span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="category.html" data-jump="1">
+				<span class="mui-icon iconfont">&#xe7f9;</span>
+				<span class="mui-tab-label">分类</span>
+			</a>
+			<a class="mui-tab-item " href="cart.html" data-jump="1">
+				<span class="mui-icon iconfont">&#xe600;</span>
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a class="mui-tab-item" href="member.html" data-jump="1" data-login="login.html">
+				<span class="mui-icon iconfont">&#xe61c;</span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+
+		<div class="mui-content"id="refreshContainer">
+			<div id="content">
+			
+			<div class="search" id="search_box">
+				<form action="javascript:return true;">
+					<span class="iconfont"><img src="../img/search.png" ></span>
+					<input type="search" id="search" name="search" placeholder="点击搜索商品" />
+				</form>
+			</div>
+			
+			<div class="mui-slider" id="slider" style="height: 200px;">
+				<div class="mui-slider-group">
+					<div class="mui-slider-item" v-for="v in info.adsense">
+						<a href="#"><img v-bind:src="config.url+'/..'+v.image"  style="height: 200px;" /></a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div v-bind:class="{'mui-indicator':true,'mui-active':!index}" v-for="(v, index) in info.adsense"></div>
+				</div>				
+			</div>
+			
+			<div class="app-box mui-row nav">
+				<div class="mui-col-xs-3 mui-col-sm-3" v-for="v in info.category">
+					<a href="category.html" v-on:tap.stop="open($event,{category_id:v.category_id})">
+						<img v-bind:src="v.image?config.url+'/..'+v.image:'../img/goods.png'">
+						<p v-html="v.category_name"><p>
+					</a>
+				</div>
+				<div class="mui-col-xs-3 mui-col-sm-3">
+					<a href="category.html" v-on:tap.stop="open($event,{category_id:0})">
+						<img src="../img/about.png">
+						<p>更多<p>
+					</a>
+				</div>
+			</div>
+			
+			<h3 class="title"><span>特价产品</span></h3>
+			
+			<div class="app-box goods" v-cloak>
+				
+				
+				<div class="mui-row" style="margin-top: 15px;">
+					<div class="mui-col-xs-6 mui-col-sm-6 list" v-for="v in info.goods1">
+						<a href="detail.html" v-on:tap.stop="open($event,{goods_id:v.goods_id})" style="display:block;">
+							<div class="img">
+								<img v-bind:src="v.picture?config.url+'/..'+v.picture:'../img/goods.png'" />
+							</div>
+							<p class="title  app-text-overflow"><span v-html="v.goods_name"></span></p>
+							<p class="price app-color"><span v-html="'￥'+v.price"></span></p>
+						</a>
+					</div>
+				</div>
+				
+			</div>
+			
+			<h3 class="title"><span>热销产品</span></h3>
+			
+			<div class="app-box goods" v-cloak>
+				
+				
+				<div class="mui-row" style="margin-top: 15px;">
+					<div class="mui-col-xs-6 mui-col-sm-6 list" v-for="v in info.goods2">
+						<a href="detail.html" v-on:tap.stop="open($event,{goods_id:v.goods_id})" style="display:block;">
+							<div class="img">
+								<img v-bind:src="v.picture?config.url+'/..'+v.picture:'../img/goods.png'" />
+							</div>
+							<p class="title  app-text-overflow"><span v-html="v.goods_name"></span></p>
+							<p class="price app-color"><span v-html="'￥'+v.price"></span></p>
+						</a>
+					</div>
+				</div>
+				
+			</div>
+
+			<div class="app-box auxiliary" v-cloak>
+				<div class="title">
+					<h3>推荐</span></h3>
+				</div>
+				<div class="mui-row list" v-for="v in info.goods3">
+						
+					<div class="mui-col-xs-4 mui-col-sm-4 img">
+						<a href="detail.html" v-on:tap.stop="open($event,{goods_id:v.goods_id})" style="display:block;">
+						<img v-bind:src="config.url+'/..'+v.picture" />
+						</a>
+					</div>
+					<div class="mui-col-xs-8 mui-col-sm-8 info">
+						<p class="name " v-html="v.goods_name"></p>
+						<p>
+							<span class="app-color price" v-html="'￥'+v.price"></span>
+							<span class="num mui-pull-right" v-html="'销量：'+v.volume"></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>

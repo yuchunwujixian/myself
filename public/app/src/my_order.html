@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>我的订单</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/app.css"/>
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="../js/app.js" ></script>
+		<script type="text/javascript" src="../js/module.js" ></script>
+		<script>
+			$(function(){
+				module.my_order();
+			});
+		</script>
+	</head>
+	<body class="my-order">
+		
+		<header class="mui-bar mui-bar-nav header  app-header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<div class="mui-title">我的订单</div>
+		</header>
+		
+		<div class="mui-content"  id="refreshContainer">
+			<div id="content">
+				
+		    <div class="mui-row order-nav">
+		        <ul>
+		            <li v-on:tap.stop="setStatus('all')" v-bind:class="{ active: map.status=='all'}">全部</li>
+		            <li v-on:tap.stop="setStatus(1)" v-bind:class="{ active: map.status==1 }">待发货</li>
+		            <li v-on:tap.stop="setStatus(2)" v-bind:class="{ active: map.status==2 }">待收货</li>
+		            <li v-on:tap.stop="setStatus(99)" v-bind:class="{ active: map.status==99 }">已完成</li>
+		        </ul>
+		    </div>
+		    
+		    <div v-if="info.total==0" class="app-content-empty" v-cloak="">
+		    	暂无订单，<a href="goods.html" data-jump="1">立即购买</a>
+		    </div>
+		    
+		    <div class="mui-row list app-box" v-for="v in info.data" style="margin-top: 10px;" v-cloak="">
+		    	<div class="mui-col-sm-12 mui-col-xs-12 top">
+					<span style="color: #8f8f94;" v-html="'订单编号'+v.order_no"></span>
+					<span class="right" style="color: red;float: right;" v-html="v.status_name"></span>		    		
+		    	</div>
+		    	
+		    	<div class="mui-col-xs-12 mui-col-sm-12 content">
+		    		<div class="mui-row goods" v-for="val in v.goods">
+						<div class="mui-col-sm-4 mui-col-xs-4 ">
+							<img  v-bind:src="config.url+'/..'+val.picture">
+						</div>
+						<div class="mui-col-sm-4 mui-col-xs-4">
+							<p class="goods-name" v-html="val.goods_name"></p>
+						</div>
+						<div class="mui-col-sm-4 mui-col-xs-4 pricebox">
+							<p>价格:<span class="price" v-html="val.price">0</span></p> 
+							<p>X&nbsp;<span class="num" v-html="val.num">1</span><span></p>
+						</div>						
+		    		</div>
+		    	</div>
+		    	<div class="mui-col-xs-12 mui-col-sm-12 desc">
+		    		<span>共<span v-html="v.goods.length"></span>件商品</span>
+		    		<span>合计￥<span v-html="v.price"></span></span>
+		    	</div>
+		    	<div class="mui-col-xs-12 mui-col-sm-12 action">
+		    		<button v-if="v.status==2" v-on:tap.stop="confirm(v.order_id)" class="mui-btn app-btn">确认收货</button>
+		    		<button v-if="v.status==0" v-on:tap.stop="pay(v.order_id)" class="mui-btn app-btn">立即支付</button>
+		    		<button v-if="v.status==0" v-on:tap.stop="close(v.order_id)" class="mui-btn mui-btn-danger">取消订单</button>
+		    	</div>
+		    </div>
+		    </div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>分类</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/app.css" />
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/app.js"></script>
+		<script type="text/javascript" src="../js/module.js"></script>
+		<script>
+			$(function() {
+				module.category();
+			});
+		</script>
+	</head>
+
+	<body class="category" style="height: 100%;">
+		<div id="content" style="height: 100%;">
+
+			<header class="mui-bar mui-bar-nav header">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<div class="mui-title">
+					<form action="javascript:return true;">
+						<input class="search mui-text-left" placeholder="输入关键词" type="search" id="search" />
+					</form>
+				</div>
+				<!-- <a class="mui-icon iconfont mui-pull-right header-right" href="../index.html" data-jump="1">&#xe61f;</a> -->
+			</header>
+
+			<nav class="mui-bar mui-bar-tab footer">
+				<a class="mui-tab-item" href="index.html" data-jump="1">
+					<span class="mui-icon iconfont">&#xe62c;</span>
+					<span class="mui-tab-label">首页</span>
+				</a>
+				<a class="mui-tab-item mui-active" href="category.html">
+					<span class="mui-icon iconfont">&#xe7f9;</span>
+					<span class="mui-tab-label">分类</span>
+				</a>
+				<a class="mui-tab-item " href="cart.html" data-jump="1">
+					<span class="mui-icon iconfont">&#xe600;</span>
+					<span class="mui-tab-label">购物车</span>
+				</a>
+				<a class="mui-tab-item" href="member.html" data-jump="1" data-login="login.html">
+					<span class="mui-icon iconfont">&#xe61c;</span>
+					<span class="mui-tab-label">我的</span>
+				</a>
+			</nav>
+			
+			<!--购物车弹窗-->
+			<div id="cart-popover" class="mui-popover  mui-popover-bottom mui-popover-action">
+				<div class="popover-header mui-row">
+					<div class="mui-col-sm-3 mui-col-xs-3">
+						<img v-bind:src="goods.picture?config.url+'/..'+goods.picture:'../img/goods.png'" />
+					</div>
+					<div class="mui-col-sm-7 mui-col-xs-7">
+						<p class="title" v-html="goods.goods_name"></p>
+						<p class="price">￥<span v-html="goods.price"></span></p>
+					</div>
+					<div class="mui-col-sm-2 mui-col-xs-2">
+						<div class="close"><span v-on:tap.stop="close" class="mui-pull-right iconfont">&#xe604;</span></div>
+					</div>
+				</div>
+				<div class="popover-content">
+					<div v-for="v in goods.spec_array">
+						<div v-html="v.spec_name+'：'"></div>
+						<div class="mui-card-content">
+							<div class="mui-input-row mui-radio mui-left" style="display: inline-block;" v-for="val in v.values"  v-on:tap="setSpec(v.spec_id,v.spec_id+':'+val.spec_value_id)">
+								<label v-html="val.spec_value_name"></label>
+								<input v-bind:name="'spec_'+v.spec_id" v-model="check[v.spec_id]" v-bind:value="v.spec_id+':'+val.spec_value_id" type="radio">
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="popover-footer mui-bar mui-bar-tab mui-row">
+<!-- 					<div class="mui-col-sm-4 mui-col-xs-4 cart" v-on:tap.stop="open_cart">
+						<div class="cart-icon">
+							<span v-html="cart_num">0</span>
+						</div>	
+						<div class="cart-desc">
+							已选商品
+						</div>
+					</div> -->
+					<div class="mui-col-sm-4 mui-col-xs-4 mui-numbox" style="height: 50px;">
+						  <!-- "-"按钮，点击可减小当前数值 -->
+						  <button style="width: 40px;" class="mui-btn mui-numbox-btn-minus" type="button" v-on:tap.stop="min">-</button>
+						  <input class="mui-numbox-input" type="number" v-model="sku_number" />
+						  <!-- "+"按钮，点击可增大当前数值 -->
+						  <button style="width: 40px;" class="mui-btn mui-numbox-btn-plus" type="button" v-on:tap.stop="plus">+</button>				
+					</div>
+					<div class="mui-col-sm-8 mui-col-xs-8">
+						<button class="mui-btn mui-btn-success mui-center" v-on:tap.stop="confirm" v-bind:disabled="disabled">加入购物车</button>	
+					</div>		
+				</div>
+			</div>
+			<!--购物车弹窗-->
+			
+			<div class="mui-content app-box" style="height: 100%;">
+				<div class="nav">
+					<li v-for="v in info.category" v-bind:class="{'mui-active':v.active}" v-on:tap.stop="setCategory(v.category_id)">
+						<span v-html="v.category_name"></span>
+					</li>
+				</div>
+				<div class="mui-row  mui-fullscreen" id="fullscreen">
+					<div class="mui-col-xs-3">
+						<div id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical">
+							<a v-bind:class="{'mui-control-item':true,'mui-active':v.active}" href="#content1" v-on:tap.stop="scrollTo(index)" v-bind:href="'#content'+index" v-for="(v,index) in info.category_son" v-html="v.category_name">
+							</a>
+						</div>
+					</div>
+					<div id="segmentedControlContents" class="mui-col-xs-9" style="border-left: 1px solid #c8c7cc;">
+
+						<div v-bind:id="'#content'+index" class="mui-control-content" v-for="(val,index) in info.category_son">
+							<ul class="mui-table-view">
+								<li class="goods">
+									<div class="title" v-html="val.category_name"></div>
+									<div class="mui-card mui-row" v-for="v in val.goods">
+										<div class="mui-col-sm-5 mui-col-xs-5 img">
+											<a href="detail.html" v-on:tap.stop="open($event,{goods_id:v.goods_id})">
+												<img v-bind:src="v.picture?config.url+'/..'+v.picture:'../img/goods.png'" />
+											</a>
+										</div>
+										<div class="mui-col-sm-7 mui-col-xs-7 info">
+											<p class="goods-name">
+												<a href="detail.html" v-on:tap.stop="open($event,{goods_id:v.goods_id})"  v-html="v.goods_name">
+												</a>
+											</p>
+											<div>
+												<span class="price" v-html="'￥'+v.price+'起/'+v.unit"></span>
+												<span class="mui-pull-right iconfont add-cart" v-on:tap.stop="addcart(v)">&#xe600;</span>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+
+</html>

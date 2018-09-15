@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>购物车</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/app.css"/>
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="../js/app.js" ></script>
+		<script type="text/javascript" src="../js/module.js" ></script>
+		<script>
+			$(function(){
+				module.cart();
+			});
+		</script>
+	</head>
+	<body class="cart">
+		<div id="content">
+			<header class="mui-bar mui-bar-nav header  app-header">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<div class="mui-title">购物车（<span v-html="info.total">0</span>）</div>
+				<div class=" mui-pull-right" v-on:tap.stop="clear" style="padding-top: 10px;">
+					<a href="javascript:">清空</a>
+				</div>
+			</header>
+			
+		<nav class="mui-bar mui-bar-tab footer">
+			<a class="mui-tab-item" href="index.html" data-jump="1">
+				<span class="mui-icon iconfont">&#xe62c;</span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="category.html" data-jump="1">
+				<span class="mui-icon iconfont">&#xe7f9;</span>
+				<span class="mui-tab-label">分类</span>
+			</a>
+			<a class="mui-tab-item mui-active" href="cart.html">
+				<span class="mui-icon iconfont">&#xe600;</span>
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a class="mui-tab-item" href="member.html" data-jump="1" data-login="login.html">
+				<span class="mui-icon iconfont">&#xe61c;</span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+
+			<div class="nav mui-bar mui-bar-tab">
+				<div class="mui-pull-left">
+						<div class="mui-input-row mui-checkbox" v-on:tap.stop="checkedAll">
+							<input name="checkbox1" type="checkbox" v-model="checked">
+							<label>全选</label>
+						</div>
+				</div>
+
+				<div class="mui-pull-right">
+					<span class="desc">合计：<font class="app-color" v-html="'￥'+totalPrice"></font></span>
+					<button class="mui-btn app-btn" v-on:tap.stop="settle">结算（<span v-html="checkbox.length"></span>）</button>
+				</div>
+			</div>		
+			<div class="mui-content app-box" v-cloak>
+				<div v-if="!info||info.total==0" class="app-content-empty">暂无商品，<a href="goods.html" data-jump="1">立即购买</a></div>
+				<ul  v-if="info&&info.total>0" class="mui-table-view">
+					<li class="mui-table-view-cell"  v-for="val in info.data">
+						<div class="mui-slider-right mui-disabled">
+							<a class="mui-btn mui-btn-red" v-on:tap.stop="remove($event,val.sku_id)">删除</a>
+						</div>
+						<div class="mui-slider-handle mui-row goods">
+							<div class="mui-col-sm-2 mui-col-xs-2 check">
+								<div class="mui-input-row mui-checkbox">
+								  <label></label>
+								  <input name="checkbox1" type="checkbox" v-bind:value="val.sku_id" v-model='checkbox'>
+								</div>
+							</div>
+							<div class="mui-col-sm-4 mui-col-xs-4">
+								<a href="detail.html" v-on:tap.stop="open($event,{goods_id:val.goods.goods_id})" style="display:block;">
+									<img  v-bind:src="val.goods.picture?config.url+'/..'+val.goods.picture:'../img/goods.png'">
+								</a>
+							</div>
+							<div class="mui-col-sm-6 mui-col-xs-6 pricebox">
+								<p><span class="title" v-html="val.goods.goods_name"></span></p> 
+								<p><span class="desc" v-html="val.sku_name"></span></p> 
+								<p>
+									<span class="num app-color" v-html="'￥'+val.price+'*'+val.num"></span>
+								</p>
+							</div>		
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</body>
+</html>

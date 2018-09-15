@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>设置</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/app.css"/>
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="../js/app.js" ></script>
+		<script type="text/javascript" src="../js/module.js" ></script>
+		<script>
+			$(function(){
+				module.setting();
+			});
+		</script>
+	</head>
+	<body>
+		
+		<header class="mui-bar mui-bar-nav header app-header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<div class="mui-title">设置</div>
+		</header>
+		<div class="mui-content" id="content">
+			
+			<div class="app-box">
+				<ul class="mui-table-view">
+				    <li class="mui-table-view-cell" style="padding: 0 15px;"><span style="padding: 11px 0;display: inline-block;">账号管理</span><span class="mui-pull-right"><img style="border-radius: 50%;width: 32px;" v-bind:src="userinfo.avatar?config.url+'/../'+userinfo.avatar:'../img/head.jpg'"/></span></li>
+				    <li class="mui-table-view-cell">手机号码<span class="mui-pull-right" style="color: #666666;;" v-html="userinfo.mobile"></span></li>
+					<li class="mui-table-view-cell" v-on:tap.stop="login_out">退出登录</li>
+				</ul>				
+			</div>
+		    
+		</div>
+	</body>
+</html>
