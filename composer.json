@@ -4,7 +4,7 @@
     "type": "yii2-extension",
 
     "description": "The test integration for the Yii framework",
-    "keywords": ["yii2", "imagine", "image", "helper"],
+    "keywords": ["yii2", "zhaotest", "image", "helper"],
     "license": "BSD-3-Clause",
     "support": {
         "issues": "https://github.com/yiisoft/yii2/issues?labels=ext%3Aimagine",
