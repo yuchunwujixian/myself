@@ -1,8 +1,6 @@
 {
-    // package name
     "name": "yiisoft/yii2-zhao-test",
 
-    // package type
     "type": "yii2-extension",
 
     "description": "The test integration for the Yii framework",
