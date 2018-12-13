@@ -1,0 +1,24 @@
+{
+    // package name
+    "name": "yiisoft/yii2-zhao-test",
+
+    // package type
+    "type": "yii2-extension",
+
+    "description": "The test integration for the Yii framework",
+    "keywords": ["yii2", "imagine", "image", "helper"],
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yiisoft/yii2/issues?labels=ext%3Aimagine",
+        "forum": "http://www.yiiframework.com/forum/",
+        "wiki": "http://www.yiiframework.com/wiki/",
+        "irc": "irc://irc.freenode.net/yii",
+        "source": "https://github.com/yiisoft/yii2"
+    },
+    "authors": [
+        {
+            "name": "yuchunwujixian",
+            "email": "342338015@qq.com"
+        }
+    ]
+}
